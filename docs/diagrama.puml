@@ -22,4 +22,6 @@ Juego *-- Usuario
 Juego *-- Mascota
 Felicidad --|> Porcentaje
 Porcentaje *-- Numero
+Juego *--Mascota 
+Felicidad --|> Porcentaje
 @enduml

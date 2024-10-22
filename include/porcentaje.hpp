@@ -1,4 +1,5 @@
 #include <stdexcept>
+
 class Porcentaje
 {
 private:
@@ -21,6 +22,7 @@ public:
         }
     }
     ~Porcentaje() {}
+
     void Incrementar(int numero)
     {
         this-> numero += numero;//incrementa la variable con la variable anterior

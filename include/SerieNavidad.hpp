@@ -14,10 +14,9 @@ public:
         for (size_t i = 0; i < noFocos; i++)
         {
             Foco Foco1;
-        
-        this->focos.emplace_back(Foco1);
+
+            this->focos.emplace_back(Foco1);
         }
-      
     }
     ~SerieNavidad() {}
     void Encender()
@@ -30,12 +29,13 @@ public:
     }
     void Imprimir()
     {
+        system("color 84");
         for (auto &&focoActual : focos)
         {
             std::cout
                 << focoActual.Imprimir()
                 << "-";
         }
-        std::cout<<std::endl;
+        std::cout << std::endl;
     }
 };

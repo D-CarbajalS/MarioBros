@@ -8,31 +8,34 @@
 using namespace std;
 using namespace ftxui;
 
-int main(int argc, char const *argv[])
+int main()
 {
     std::string reset_position;
     int frame = 0;
-    auto can = Canvas(150,150);
-    can.DrawPointCircle(30,20,10);
-    can.DrawPointCircle(50,25,10);
-    can.DrawPointLine(20,14,11,10);
-    can.DrawPointLine(22,14,11,15);
-    auto ColorSupport = vbox({
-                            Terminal::ColorSupport() >= Terminal::Color::Palette16
-                                ? text(" 16 color palette support : Yes")
-                                : text(" 16 color palette support : No"),
-                            Terminal::ColorSupport() >= Terminal::Color::Palette256
-                                ? text("256 color palette support : Yes")
-                                : text("256 color palette support : No"),
-                            Terminal::ColorSupport() >= Terminal::Color::TrueColor
-                                ? text("       True color support : Yes")
-                                : text("       True color support : No"),
-                        });
+    int paletaPosition = 30; 
+
     while (true)
     {
+        auto can = Canvas(500, 500);
+
+        can.DrawBlockLine(151, 50, 151, 100);
+        can.DrawBlockLine(150, 50, 150, 100);
+        can.DrawBlockLine(149, 50, 149, 100);
+
+        can.DrawBlockCircleFilled(150, paletaPosition, 25, Color::DarkBlue);
+        can.DrawBlockCircleFilled(140, paletaPosition, 25, Color::DarkBlue);
+        can.DrawBlockCircleFilled(160, paletaPosition, 25, Color::DarkBlue);
+        can.DrawBlockCircleFilled(150, paletaPosition + 2, 25, Color::DarkBlue);
+        can.DrawBlockCircleFilled(150, paletaPosition - 2, 25, Color::DarkBlue);
+
+        paletaPosition++;
+    
+        if (paletaPosition > 100) {
+            paletaPosition = 30; 
+        }
+
         Screen pantalla = Screen::Create(Dimension::Full(), Dimension::Full());
-        Element personaje = spinner(20, frame);
-        Element lienzo = bgcolor(Color::GrayDark, border(vbox(ColorSupport,personaje,canvas(&can))));
+        Element lienzo = bgcolor(Color::Blue3, canvas(&can));
         Render(pantalla, lienzo);
         std::cout << reset_position;
         pantalla.Print();
